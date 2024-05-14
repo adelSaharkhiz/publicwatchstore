@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mywatchstore/components/theme.dart';
+import 'package:mywatchstore/screens/send_sms_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,8 +13,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: Container(),
+      theme: lightTheme(),
+      home: const SendSmsScreen(),
     );
   }
 }
