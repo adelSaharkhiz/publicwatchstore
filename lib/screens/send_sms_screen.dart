@@ -3,6 +3,7 @@ import 'package:mywatchstore/components/extentions.dart';
 import 'package:mywatchstore/gen/assets.gen.dart';
 import 'package:mywatchstore/res/dimens.dart';
 import 'package:mywatchstore/res/strings.dart';
+import 'package:mywatchstore/screens/verify_code_screen.dart';
 import 'package:mywatchstore/widgets/app_text_field.dart';
 import 'package:mywatchstore/widgets/main_button.dart';
 
@@ -28,6 +29,11 @@ class SendSmsScreen extends StatelessWidget {
                 hintText: AppStrings.hintPhoneNumber),
             MainButton(
               onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const VerifyCodeScreen(),
+                    ));
               },
               text: AppStrings.sendOtpCode,
             )
