@@ -10,8 +10,8 @@ ThemeData lightTheme() {
       iconTheme: const IconThemeData(color: Colors.black),
       inputDecorationTheme: InputDecorationTheme(
           filled: true,
-          fillColor: MaterialStateColor.resolveWith((states) {
-            if (states.contains(MaterialState.focused)) {
+          fillColor: WidgetStateColor.resolveWith((states) {
+            if (states.contains(WidgetState.focused)) {
               return AppColors.focusedTextField;
             } else {
               return AppColors.unFocusedTextField;
