@@ -2,10 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:mywatchstore/gen/assets.gen.dart';
 import 'package:mywatchstore/res/colors.dart';
 import 'package:mywatchstore/res/strings.dart';
+import 'package:mywatchstore/screens/main_screen/basket_screen.dart';
+import 'package:mywatchstore/screens/main_screen/home_screen.dart';
+import 'package:mywatchstore/screens/main_screen/profile_screen.dart';
 import 'package:mywatchstore/widgets/btm_nav_item.dart';
 
-class MainScreen extends StatelessWidget {
+class BtmNavScreenIndex {
+  BtmNavScreenIndex._();
+
+  static const home = 0;
+  static const basket = 1;
+  static const user = 2;
+}
+
+class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
+
+  @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  var selectedIndex = BtmNavScreenIndex.home;
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +39,9 @@ class MainScreen extends StatelessWidget {
               left: 0,
               right: 0,
               bottom: btmNavHeight,
-              child: Container(
-                color: Colors.red,
+              child: IndexedStack(
+                index: selectedIndex,
+                children: const [HomeScreen(), BasketScreen(), ProfileScreen()],
               )),
           Positioned(
               left: 0,
@@ -36,22 +55,25 @@ class MainScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     BtmNavItem(
-                      onTap: () {},
-                      iconPath: Assets.svg.home,
-                      text: AppStrings.home,
-                      isActive: true,
-                    ),
-                    BtmNavItem(
-                      onTap: () {},
-                      iconPath: Assets.svg.basket,
-                      text: AppStrings.basket,
-                      isActive: true,
-                    ),
-                    BtmNavItem(
-                      onTap: () {},
+                      onTap: () =>
+                          btmNavOnPressed(index: BtmNavScreenIndex.user),
                       iconPath: Assets.svg.user,
                       text: AppStrings.userProfile,
-                      isActive: true,
+                      isActive: selectedIndex == BtmNavScreenIndex.user,
+                    ),
+                    BtmNavItem(
+                      onTap: () =>
+                          btmNavOnPressed(index: BtmNavScreenIndex.basket),
+                      iconPath: Assets.svg.basket,
+                      text: AppStrings.basket,
+                      isActive: selectedIndex == BtmNavScreenIndex.basket,
+                    ),
+                    BtmNavItem(
+                      onTap: () =>
+                          btmNavOnPressed(index: BtmNavScreenIndex.home),
+                      iconPath: Assets.svg.home,
+                      text: AppStrings.home,
+                      isActive: selectedIndex == BtmNavScreenIndex.home,
                     ),
                   ],
                 ),
@@ -59,5 +81,11 @@ class MainScreen extends StatelessWidget {
         ],
       ),
     ));
+  }
+
+  btmNavOnPressed({required index}) {
+    setState(() {
+      selectedIndex = index;
+    });
   }
 }

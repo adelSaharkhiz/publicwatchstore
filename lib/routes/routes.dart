@@ -11,7 +11,7 @@ Map<String, Widget Function(BuildContext)> routes = {
   ScreenNames.root: (context) => const SendSmsScreen(),
   ScreenNames.verifyCodeScreen: (context) => const VerifyCodeScreen(),
   ScreenNames.registerScreen: (context) => const RegisterScreen(),
-  ScreenNames.mainScreen: (context) => const MainScreen(),
+  ScreenNames.mainScreen: (context) =>  MainScreen(),
   ScreenNames.basketScreen: (context) => const BasketScreen(),
   ScreenNames.homeScreen: (context) => const HomeScreen(),
 };
