@@ -6,8 +6,11 @@ import 'package:mywatchstore/res/strings.dart';
 
 class CustomeAppBar extends StatelessWidget implements PreferredSize {
   const CustomeAppBar({
+    required this.size,
     super.key,
   });
+
+  final Size size;
 
   @override
   Widget build(BuildContext context) {
@@ -31,5 +34,5 @@ class CustomeAppBar extends StatelessWidget implements PreferredSize {
       );
 
   @override
-  Size get preferredSize => const Size(double.infinity, 70);
+  Size get preferredSize => Size.fromHeight(size.height * .1);
 }

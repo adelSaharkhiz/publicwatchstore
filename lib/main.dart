@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mywatchstore/components/theme.dart';
-import 'package:mywatchstore/screens/send_sms_screen.dart';
+import 'package:mywatchstore/routes/routes.dart';
+import 'package:mywatchstore/routes/screen_names.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +17,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: lightTheme(),
-      home: const SendSmsScreen(),
+      initialRoute: ScreenNames.root,
+      routes: routes,
     );
   }
 }

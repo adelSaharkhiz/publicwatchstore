@@ -4,6 +4,7 @@ import 'package:mywatchstore/components/extentions.dart';
 import 'package:mywatchstore/gen/assets.gen.dart';
 import 'package:mywatchstore/res/dimens.dart';
 import 'package:mywatchstore/res/strings.dart';
+import 'package:mywatchstore/routes/screen_names.dart';
 import 'package:mywatchstore/widgets/app_text_field.dart';
 import 'package:mywatchstore/widgets/avatar.dart';
 import 'package:mywatchstore/widgets/custome_app_bar.dart';
@@ -15,9 +16,10 @@ class RegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextEditingController controller = TextEditingController();
+    Size size = MediaQuery.sizeOf(context);
     return SafeArea(
         child: Scaffold(
-      appBar: const CustomeAppBar(),
+      appBar: CustomeAppBar(size: size),
       body: SizedBox(
         width: double.infinity,
         child: SingleChildScrollView(
@@ -51,7 +53,11 @@ class RegisterScreen extends StatelessWidget {
                     fit: BoxFit.scaleDown),
               ),
               AppDimens.small.height,
-              MainButton(onPressed: () {}, text: AppStrings.register),
+              MainButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, ScreenNames.mainScreen);
+                  },
+                  text: AppStrings.register),
               AppDimens.large.height
             ],
           ),

@@ -4,7 +4,7 @@ import 'package:mywatchstore/components/text_style.dart';
 import 'package:mywatchstore/gen/assets.gen.dart';
 import 'package:mywatchstore/res/dimens.dart';
 import 'package:mywatchstore/res/strings.dart';
-import 'package:mywatchstore/screens/register_screen.dart';
+import 'package:mywatchstore/routes/screen_names.dart';
 import 'package:mywatchstore/widgets/app_text_field.dart';
 import 'package:mywatchstore/widgets/main_button.dart';
 
@@ -39,10 +39,7 @@ class VerifyCodeScreen extends StatelessWidget {
                 hintText: AppStrings.hintPhoneNumber),
             MainButton(
               onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const RegisterScreen()));
+                Navigator.pushNamed(context, ScreenNames.registerScreen);
               },
               text: AppStrings.next,
             )
