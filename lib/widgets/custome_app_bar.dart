@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mywatchstore/components/text_style.dart';
 import 'package:mywatchstore/gen/assets.gen.dart';
+import 'package:mywatchstore/res/colors.dart';
 import 'package:mywatchstore/res/strings.dart';
 
 class CustomeAppBar extends StatelessWidget implements PreferredSize {
@@ -19,7 +20,7 @@ class CustomeAppBar extends StatelessWidget implements PreferredSize {
 
   @override
   Widget get child => Container(
-        color: Colors.amber,
+        color: AppColors.appbar,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

@@ -5,6 +5,6 @@ class ScreenNames {
   static const sendSmsScreen = "/sendSmsScreen";
   static const verifyCodeScreen = "/verifyCodeScreen";
   static const mainScreen = "/mainScreen";
-  static const basketScreen = "/basketScreen";
-  static const homeScreen = "/homeScreen";
+  static const productSingleScreen = "/productSingleScreen";
+  static const productListScreen = "/productListScreen";
 }
