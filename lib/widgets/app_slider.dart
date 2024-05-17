@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:mywatchstore/res/colors.dart';
 import 'package:mywatchstore/res/dimens.dart';
 
 List<String> imgList = [
@@ -22,12 +23,9 @@ class _AppSliderState extends State<AppSlider> {
   final CarouselController _controller = CarouselController();
 
   final List<Widget> items = imgList
-      .map((e) => Padding(
-            padding: const EdgeInsets.all(AppDimens.medium),
-            child: ClipRRect(
-                borderRadius: BorderRadius.circular(AppDimens.medium),
-                child: Image.network(e, fit: BoxFit.cover)),
-          ))
+      .map((e) => ClipRRect(
+          borderRadius: BorderRadius.circular(AppDimens.medium),
+          child: Image.network(e, fit: BoxFit.cover)))
       .toList();
 
   int _currunt = 0;
@@ -61,13 +59,19 @@ class _AppSliderState extends State<AppSlider> {
                 .map((e) => GestureDetector(
                       onTap: () => _controller.animateToPage(e.key),
                       child: Container(
-                        margin: const EdgeInsets.all(AppDimens.small * .5),
-                        height: 12,
-                        width: 12,
+                        margin: const EdgeInsets.only(
+                            top: 0,
+                            right: AppDimens.small,
+                            left: AppDimens.small,
+                            bottom: AppDimens.small),
+                        height: 10,
+                        width: 10,
                         decoration: BoxDecoration(
+                            border: Border.all(
+                                width: 1, color: AppColors.sliderCircle),
                             shape: BoxShape.circle,
                             color:
-                                _currunt == e.key ? Colors.black : Colors.grey),
+                                _currunt == e.key ? Colors.grey : Colors.white),
                       ),
                     ))
                 .toList())

@@ -44,6 +44,7 @@ class AppColors {
   static const Color btmNavInActiveItem = Color.fromARGB(255, 196, 196, 196);
   static const Color amazingColor = Color.fromARGB(255, 57, 24, 80);
   static const Color mainBtnColor = Color.fromARGB(255, 0, 117, 251);
+  static const Color sliderCircle = Color.fromARGB(255, 112, 112, 112);
   static const Color success = Colors.green;
   static const Color onSuccess = Colors.white;
 }
