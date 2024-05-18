@@ -9,10 +9,20 @@ import 'package:mywatchstore/res/dimens.dart';
 class ProductsContainer extends StatelessWidget {
   ProductsContainer({
     required this.onTap,
+    required this.productName,
+    required this.price,
+    this.oldPrice = 0,
+    this.discount = 0,
+    this.timer = 0,
     super.key,
   });
 
   void Function() onTap;
+  final productName;
+  final oldPrice;
+  final price;
+  final discount;
+  final timer;
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +41,9 @@ class ProductsContainer extends StatelessWidget {
           child: Column(
             children: [
               Image.asset(Assets.png.unnamed.path, fit: BoxFit.cover),
-              const Align(
+              Align(
                   alignment: Alignment.topRight,
-                  child: Text("ساعت مردانه رولکس",
-                      style: AppTextStyles.productTitle)),
+                  child: Text(productName, style: AppTextStyles.productTitle)),
               AppDimens.medium.height,
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -42,19 +51,25 @@ class ProductsContainer extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("${63500.sepratedWithComa}تومان",
+                      const Text("${6000000} تومان",
                           textDirection: TextDirection.rtl),
-                      Text(122000.sepratedWithComa,
-                          textDirection: TextDirection.rtl,
-                          style: AppTextStyles.oldPriceStyle),
+                      Visibility(
+                        visible: discount > 0 ? true : false,
+                        child: const Text("${8000000}",
+                            textDirection: TextDirection.rtl,
+                            style: AppTextStyles.oldPriceStyle),
+                      ),
                     ],
                   ),
-                  Container(
-                    padding: const EdgeInsets.all(AppDimens.small * .5),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(60),
-                        color: Colors.red),
-                    child: const Text("20 %"),
+                  Visibility(
+                    visible: discount > 0 ? true : false,
+                    child: Container(
+                      padding: const EdgeInsets.all(AppDimens.small * .5),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(60),
+                          color: Colors.red),
+                      child: Text("$discount %"),
+                    ),
                   ),
                 ],
               ),
@@ -65,9 +80,12 @@ class ProductsContainer extends StatelessWidget {
                 color: Colors.blue,
               ),
               AppDimens.medium.height,
-              const Text(
-                "09:30:45",
-                style: AppTextStyles.prodTimerStyle,
+              Visibility(
+                visible: timer > 0 ? true : false,
+                child: const Text(
+                  "09:26:45",
+                  style: AppTextStyles.prodTimerStyle,
+                ),
               )
             ],
           )),

@@ -52,6 +52,11 @@ class HomeScreen extends StatelessWidget {
                     itemBuilder: (context, index) {
                       return ProductsContainer(
                         onTap: () {},
+                        productName: "ساعت رولکس",
+                        price: 200,
+                        oldPrice: 1,
+                        discount: 20,
+                        timer: 1,
                       );
                     },
                   ),
