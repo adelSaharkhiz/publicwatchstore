@@ -7,7 +7,7 @@ import 'package:mywatchstore/res/strings.dart';
 import 'package:mywatchstore/routes/screen_names.dart';
 import 'package:mywatchstore/widgets/app_text_field.dart';
 import 'package:mywatchstore/widgets/avatar.dart';
-import 'package:mywatchstore/widgets/custome_app_bar.dart';
+import 'package:mywatchstore/widgets/register_app_bar.dart';
 import 'package:mywatchstore/widgets/main_button.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -19,7 +19,7 @@ class RegisterScreen extends StatelessWidget {
     Size size = MediaQuery.sizeOf(context);
     return SafeArea(
         child: Scaffold(
-      appBar: CustomeAppBar(size: size),
+      appBar: RegisterAppBar(size: size),
       body: SizedBox(
         width: double.infinity,
         child: SingleChildScrollView(

@@ -6,6 +6,7 @@ import 'package:mywatchstore/screens/main_screen/basket_screen.dart';
 import 'package:mywatchstore/screens/main_screen/home_screen.dart';
 import 'package:mywatchstore/screens/main_screen/profile_screen.dart';
 import 'package:mywatchstore/widgets/btm_nav_item.dart';
+import 'package:mywatchstore/widgets/cart_badge.dart';
 
 class BtmNavScreenIndex {
   BtmNavScreenIndex._();
@@ -107,7 +108,8 @@ class _MainScreenState extends State<MainScreen> {
                         BtmNavItem(
                           onTap: () =>
                               btmNavOnPressed(index: BtmNavScreenIndex.basket),
-                          iconPath: Assets.svg.basket,
+                          count: 1,    
+                          iconPath: Assets.svg.cart,
                           text: AppStrings.basket,
                           isActive: selectedIndex == BtmNavScreenIndex.basket,
                         ),

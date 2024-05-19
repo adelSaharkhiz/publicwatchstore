@@ -1,39 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:mywatchstore/components/text_style.dart';
-import 'package:mywatchstore/gen/assets.gen.dart';
 import 'package:mywatchstore/res/colors.dart';
-import 'package:mywatchstore/res/strings.dart';
+import 'package:mywatchstore/res/dimens.dart';
 
 class CustomeAppBar extends StatelessWidget implements PreferredSize {
-  const CustomeAppBar({
-    required this.size,
-    super.key,
-  });
-
-  final Size size;
+  const CustomeAppBar({super.key, required this.child});
 
   @override
+  final Widget child;
+  @override
   Widget build(BuildContext context) {
-    return PreferredSize(preferredSize: preferredSize, child: child);
+    return Container(
+      height: preferredSize.height,
+      width: double.infinity,
+      padding: const EdgeInsets.all(AppDimens.medium),
+      decoration: const BoxDecoration(
+          color: AppColors.appbar,
+          borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(AppDimens.medium),
+              bottomRight: Radius.circular(AppDimens.medium)),
+          boxShadow: [
+            BoxShadow(
+                color: AppColors.shadow, offset: Offset(0, 2), blurRadius: 3)
+          ]),
+      child: child,
+    );
   }
 
   @override
-  Widget get child => Container(
-        color: AppColors.appbar,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            IconButton(
-                onPressed: () {}, icon: SvgPicture.asset(Assets.svg.back)),
-            const Text(
-              AppStrings.register,
-              style: AppTextStyles.title,
-            )
-          ],
-        ),
-      );
-
-  @override
-  Size get preferredSize => Size.fromHeight(size.height * .1);
+  Size get preferredSize => const Size.fromHeight(60);
 }
