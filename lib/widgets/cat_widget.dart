@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:mywatchstore/components/text_style.dart';
 import 'package:mywatchstore/res/dimens.dart';
 
+// ignore: must_be_immutable
 class CatWidget extends StatelessWidget {
    CatWidget({
     super.key,

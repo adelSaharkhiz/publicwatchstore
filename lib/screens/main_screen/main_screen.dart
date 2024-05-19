@@ -6,7 +6,6 @@ import 'package:mywatchstore/screens/main_screen/basket_screen.dart';
 import 'package:mywatchstore/screens/main_screen/home_screen.dart';
 import 'package:mywatchstore/screens/main_screen/profile_screen.dart';
 import 'package:mywatchstore/widgets/btm_nav_item.dart';
-import 'package:mywatchstore/widgets/cart_badge.dart';
 
 class BtmNavScreenIndex {
   BtmNavScreenIndex._();

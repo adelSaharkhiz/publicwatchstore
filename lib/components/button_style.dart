@@ -10,4 +10,10 @@ class ButtonStyles {
     foregroundColor: const WidgetStatePropertyAll(AppColors.mainButtonText),
       shape: WidgetStatePropertyAll(RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppDimens.medium))));
+
+  static ButtonStyle addToCartbUtton = ButtonStyle(
+    backgroundColor: const WidgetStatePropertyAll(AppColors.mainBtnColor),
+    foregroundColor: const WidgetStatePropertyAll(AppColors.mainButtonText),
+      shape: WidgetStatePropertyAll(RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppDimens.medium))));
 }
