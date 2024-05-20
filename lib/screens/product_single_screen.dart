@@ -5,6 +5,7 @@ import 'package:mywatchstore/components/text_style.dart';
 import 'package:mywatchstore/gen/assets.gen.dart';
 import 'package:mywatchstore/res/colors.dart';
 import 'package:mywatchstore/res/dimens.dart';
+import 'package:mywatchstore/res/strings.dart';
 import 'package:mywatchstore/widgets/add_to_cart_button.dart';
 import 'package:mywatchstore/widgets/cart_badge.dart';
 import 'package:mywatchstore/widgets/custome_app_bar.dart';
@@ -81,7 +82,13 @@ class ProductSingleScreen extends StatelessWidget {
                 child: const Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [PriceWithDiscount(discount: 20), AddToCartBtn()],
+                  children: [
+                    PriceWithDiscount(discount: 20),
+                    AddToCartBtn(
+                      title: AppStrings.addToCart,
+                      backgroundColor: AppColors.mainBtnColor,
+                    )
+                  ],
                 ),
               ))
         ],

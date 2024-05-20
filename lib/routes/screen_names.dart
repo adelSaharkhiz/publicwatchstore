@@ -1,3 +1,4 @@
+
 class ScreenNames {
   ScreenNames._();
   static const root = "/";
@@ -7,4 +8,5 @@ class ScreenNames {
   static const mainScreen = "/mainScreen";
   static const productSingleScreen = "/productSingleScreen";
   static const productListScreen = "/productListScreen";
+  static const cartScreen = "/cartScreen";
 }

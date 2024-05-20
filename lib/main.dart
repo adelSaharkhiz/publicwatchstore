@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mywatchstore/components/theme.dart';
 import 'package:mywatchstore/routes/screen_names.dart';
-import 'package:mywatchstore/screens/product_single_screen.dart';
+import 'package:mywatchstore/screens/main_screen/profile_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: lightTheme(),
       initialRoute: ScreenNames.root,
       // routes: routes,
-      home: const ProductSingleScreen(),
+      home: const ProfileScreen(),
     );
   }
 }

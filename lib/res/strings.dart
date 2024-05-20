@@ -15,6 +15,7 @@ abstract class AppStrings {
   static const String homeNumber = "تلفن ثابت";
   static const String sendToAddress = "ارسال به آدرس";
   static const String address = "آدرس";
+  static const String policy = "قوانین و مقررات";
   static const String postalCode = "کد پستی";
   static const String location = "انتخاب موقعیت مکانی";
   static const String hintNameLastName =
@@ -40,6 +41,7 @@ abstract class AppStrings {
   static const String review = "نقد و بررسی";
   static const String commnets = "نظرات";
   static const String addToCart = "افزودن به سبد خرید";
+  static const String proccessShopping = "ادامه فرآیند خرید";
   static const String count = "عدد";
   static const String totalPrice = "مجموع  $replace تومان";
   static const String continueToPurchase = "مجموع  $replace تومان";

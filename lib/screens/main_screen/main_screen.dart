@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mywatchstore/gen/assets.gen.dart';
 import 'package:mywatchstore/res/colors.dart';
 import 'package:mywatchstore/res/strings.dart';
-import 'package:mywatchstore/screens/main_screen/basket_screen.dart';
+import 'package:mywatchstore/screens/main_screen/cart_screen.dart';
 import 'package:mywatchstore/screens/main_screen/home_screen.dart';
 import 'package:mywatchstore/screens/main_screen/profile_screen.dart';
 import 'package:mywatchstore/widgets/btm_nav_item.dart';
@@ -11,7 +11,7 @@ class BtmNavScreenIndex {
   BtmNavScreenIndex._();
 
   static const home = 0;
-  static const basket = 1;
+  static const cart = 1;
   static const profile = 2;
 }
 
@@ -27,13 +27,14 @@ class _MainScreenState extends State<MainScreen> {
   List<int> routeHistory = [BtmNavScreenIndex.home];
 
   int selectedIndex = BtmNavScreenIndex.home;
+  
   final GlobalKey<NavigatorState> homeKey = GlobalKey();
   final GlobalKey<NavigatorState> basketKey = GlobalKey();
   final GlobalKey<NavigatorState> profileKey = GlobalKey();
 
   late final Map map = {
     BtmNavScreenIndex.home: homeKey,
-    BtmNavScreenIndex.basket: basketKey,
+    BtmNavScreenIndex.cart: basketKey,
     BtmNavScreenIndex.profile: profileKey,
   };
 
@@ -77,7 +78,7 @@ class _MainScreenState extends State<MainScreen> {
                       Navigator(
                         key: basketKey,
                         onGenerateRoute: (settings) => MaterialPageRoute(
-                            builder: (context) => const BasketScreen()),
+                            builder: (context) => const CartScreen()),
                       ),
                       Navigator(
                         key: profileKey,
@@ -106,11 +107,11 @@ class _MainScreenState extends State<MainScreen> {
                         ),
                         BtmNavItem(
                           onTap: () =>
-                              btmNavOnPressed(index: BtmNavScreenIndex.basket),
+                              btmNavOnPressed(index: BtmNavScreenIndex.cart),
                           count: 1,    
                           iconPath: Assets.svg.cart,
                           text: AppStrings.basket,
-                          isActive: selectedIndex == BtmNavScreenIndex.basket,
+                          isActive: selectedIndex == BtmNavScreenIndex.cart,
                         ),
                         BtmNavItem(
                           onTap: () =>
