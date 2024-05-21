@@ -36,7 +36,7 @@ class _AppSliderState extends State<AppSlider> {
     return Column(
       children: [
         Container(
-          margin: const EdgeInsets.all(AppDimens.medium),
+          padding: const EdgeInsets.symmetric(vertical: AppDimens.large),
           height: size.height * .29,
           width: double.infinity,
           child: CarouselSlider(

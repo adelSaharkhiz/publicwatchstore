@@ -14,6 +14,7 @@ class VerifyCodeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextEditingController controller = TextEditingController();
+    final mobileRouteArg = ModalRoute.of(context)!.settings.arguments as String;
     return SafeArea(
         child: Scaffold(
       body: SizedBox(
@@ -24,7 +25,7 @@ class VerifyCodeScreen extends StatelessWidget {
           children: [
             Image.asset(Assets.png.mainLogo.path),
             AppDimens.medium.height,
-            Text(AppStrings.otpCodeSendFor.replaceAll("replace", "09157021865"),
+            Text(AppStrings.otpCodeSendFor.replaceAll("replace", mobileRouteArg),
                 style: AppTextStyles.title),
             AppDimens.small.height,
             const Text(
