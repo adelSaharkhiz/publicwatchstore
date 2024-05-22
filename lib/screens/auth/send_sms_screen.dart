@@ -14,7 +14,7 @@ class SendSmsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController controller = TextEditingController();
+    TextEditingController _controller = TextEditingController();
     return SafeArea(
         child: Scaffold(
       body: SizedBox(
@@ -27,7 +27,7 @@ class SendSmsScreen extends StatelessWidget {
             AppDimens.large.height,
             AppTextField(
                 lablel: AppStrings.enterYourNumber,
-                controller: controller,
+                controller: _controller,
                 hintText: AppStrings.hintPhoneNumber),
             BlocConsumer<AuthCubit, AuthState>(
               listener: (context, state) {
@@ -48,7 +48,7 @@ class SendSmsScreen extends StatelessWidget {
                 }
                 return MainButton(
                   onPressed: () => BlocProvider.of<AuthCubit>(context)
-                      .sendSms(controller.text),
+                      .sendSms(_controller.text),
                   text: AppStrings.sendOtpCode,
                 );
               },

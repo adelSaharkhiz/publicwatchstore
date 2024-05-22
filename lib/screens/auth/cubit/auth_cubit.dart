@@ -8,7 +8,6 @@ part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial()) {
-
     // emit(LoggedInState());
 
     emit(LoggedOutState());
@@ -36,11 +35,15 @@ class AuthCubit extends Cubit<AuthState> {
   verifyCode(String mobile, String code) async {
     emit(LoadingState());
     try {
-      await _dio.post(EndPoints.sendSms,
+      await _dio.post(EndPoints.checkSmsCode,
           data: {"mobile": mobile, "code": code}).then((value) {
         debugPrint(value.toString());
         if (value.statusCode == 201) {
-          emit(VerifiedState());
+          if (value.data["data"]["is_registered"]) {
+            emit(VerifiedIsRegisteredState());
+          } else {
+            emit(VerifiedNotRegisteredState());
+          }
         } else {
           emit(ErrorState());
         }

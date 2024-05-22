@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mywatchstore/screens/auth/cubit/auth_cubit.dart';
 import 'package:mywatchstore/screens/auth/send_sms_screen.dart';
 import 'package:mywatchstore/screens/main_screen/home_screen.dart';
-import 'package:mywatchstore/screens/main_screen/main_screen.dart';
 
 void main() {
   runApp(const MyApp());
