@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mywatchstore/components/extentions.dart';
@@ -10,12 +12,51 @@ import 'package:mywatchstore/screens/auth/cubit/auth_cubit.dart';
 import 'package:mywatchstore/widgets/app_text_field.dart';
 import 'package:mywatchstore/widgets/main_button.dart';
 
-class VerifyCodeScreen extends StatelessWidget {
+class VerifyCodeScreen extends StatefulWidget {
   const VerifyCodeScreen({super.key});
 
   @override
+  State<VerifyCodeScreen> createState() => _VerifyCodeScreenState();
+}
+
+class _VerifyCodeScreenState extends State<VerifyCodeScreen> {
+  TextEditingController _controller = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    startTimer();
+  }
+
+  late Timer _timer;
+  int _start = 120;
+
+  startTimer() {
+    const oneSec = Duration(seconds: 1);
+    _timer = Timer.periodic(oneSec, (timer) {
+      setState(() {
+        if (_start == 0) {
+          _timer.cancel();
+          Navigator.pop(context);
+        } else if (_start > 0) {
+          _start--;
+        }
+      });
+    });
+  }
+
+  String formatTime(int sec) {
+    int min = sec ~/ 60;
+    int seconds = sec % 60;
+
+    String minStr = min.toString().padLeft(2, "0");
+    String secondsStr = seconds.toString().padLeft(2, "0");
+
+    return "$minStr:$secondsStr";
+  }
+
+  @override
   Widget build(BuildContext context) {
-    TextEditingController _controller = TextEditingController();
     final mobileRouteArg = ModalRoute.of(context)!.settings.arguments as String;
     return SafeArea(
         child: Scaffold(
@@ -41,7 +82,7 @@ class VerifyCodeScreen extends StatelessWidget {
             AppDimens.large.height,
             AppTextField(
                 lablel: AppStrings.enterVerificationCode,
-                prefixLablel: "2:56",
+                prefixLablel: formatTime(_start),
                 controller: _controller,
                 hintText: AppStrings.hintVerificationCode),
             BlocConsumer<AuthCubit, AuthState>(
@@ -68,7 +109,7 @@ class VerifyCodeScreen extends StatelessWidget {
                 return MainButton(
                   onPressed: () {
                     BlocProvider.of<AuthCubit>(context)
-                      .verifyCode(mobileRouteArg, _controller.text);
+                        .verifyCode(mobileRouteArg, _controller.text);
                   },
                   text: AppStrings.next,
                 );
