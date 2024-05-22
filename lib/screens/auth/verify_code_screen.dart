@@ -87,6 +87,7 @@ class _VerifyCodeScreenState extends State<VerifyCodeScreen> {
                 hintText: AppStrings.hintVerificationCode),
             BlocConsumer<AuthCubit, AuthState>(
               listener: (context, state) {
+                _timer.cancel();
                 if (state is ErrorState) {
                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                     content: Text("خطایی رخ داده است"),
@@ -99,7 +100,7 @@ class _VerifyCodeScreenState extends State<VerifyCodeScreen> {
                     ScreenNames.registerScreen,
                   );
                 } else if (state is VerifiedIsRegisteredState) {
-                  Navigator.pushNamed(context, ScreenNames.homeScreen);
+                  Navigator.pushNamed(context, ScreenNames.mainScreen);
                 }
               },
               builder: (context, state) {

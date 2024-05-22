@@ -5,8 +5,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mywatchstore/screens/auth/cubit/auth_cubit.dart';
 import 'package:mywatchstore/screens/auth/send_sms_screen.dart';
 import 'package:mywatchstore/screens/main_screen/home_screen.dart';
+import 'package:mywatchstore/utils/shared_prefrences_manager.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SharedPreferencesManager().init();
   runApp(const MyApp());
 }
 
@@ -24,7 +27,8 @@ class MyApp extends StatelessWidget {
         theme: lightTheme(),
         // initialRoute: ScreenNames.root,
         routes: routes,
-        home: BlocBuilder<AuthCubit, AuthState>(
+        home:
+         BlocBuilder<AuthCubit, AuthState>(
           builder: (context, state) {
             if (state is LoggedInState) {
               return const HomeScreen();

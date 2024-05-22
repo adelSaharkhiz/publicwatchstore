@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 import 'package:dio/dio.dart';
 import 'package:mywatchstore/data/constant.dart';
+import 'package:mywatchstore/utils/shared_prefrences_constant.dart';
+import 'package:mywatchstore/utils/shared_prefrences_manager.dart';
 
 part 'auth_state.dart';
 
@@ -39,6 +41,12 @@ class AuthCubit extends Cubit<AuthState> {
           data: {"mobile": mobile, "code": code}).then((value) {
         debugPrint(value.toString());
         if (value.statusCode == 201) {
+          SharedPreferencesManager().saveString(
+              SharedPrefrencesConstant.token, value.data["data"]["token"]);
+
+          debugPrint(
+              "token: ${SharedPreferencesManager().getString(SharedPrefrencesConstant.token)}");
+
           if (value.data["data"]["is_registered"]) {
             emit(VerifiedIsRegisteredState());
           } else {
