@@ -44,9 +44,6 @@ class AuthCubit extends Cubit<AuthState> {
           SharedPreferencesManager().saveString(
               SharedPrefrencesConstant.token, value.data["data"]["token"]);
 
-          debugPrint(
-              "token: ${SharedPreferencesManager().getString(SharedPrefrencesConstant.token)}");
-
           if (value.data["data"]["is_registered"]) {
             emit(VerifiedIsRegisteredState());
           } else {

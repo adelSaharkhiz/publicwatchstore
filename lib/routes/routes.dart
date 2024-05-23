@@ -4,7 +4,7 @@ import 'package:mywatchstore/screens/main_screen/cart_screen.dart';
 import 'package:mywatchstore/screens/main_screen/main_screen.dart';
 import 'package:mywatchstore/screens/product_single_screen.dart';
 import 'package:mywatchstore/screens/product_list_screen.dart';
-import 'package:mywatchstore/screens/register_screen.dart';
+import 'package:mywatchstore/screens/register/register_screen.dart';
 import 'package:mywatchstore/screens/auth/send_sms_screen.dart';
 import 'package:mywatchstore/screens/auth/verify_code_screen.dart';
 

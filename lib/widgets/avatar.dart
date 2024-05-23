@@ -5,19 +5,34 @@ import 'package:mywatchstore/gen/assets.gen.dart';
 import 'package:mywatchstore/res/dimens.dart';
 import 'package:mywatchstore/res/strings.dart';
 
+// ignore: must_be_immutable
 class Avatar extends StatelessWidget {
-  const Avatar({super.key});
+  Avatar({super.key, required this.onTap, required this.file});
+
+  void Function() onTap;
+  final file;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        ClipRRect(
-            borderRadius: BorderRadius.circular(1000),
-            child: Image.asset(Assets.png.avatar.path)),
-        AppDimens.medium.height,
-        const Text(AppStrings.chooseProfileImage,style: AppTextStyles.avatarText)
-      ],
+    Size size = MediaQuery.sizeOf(context);
+    return GestureDetector(
+      onTap: onTap,
+      child: Column(
+        children: [
+          SizedBox(
+            width: size.width * .3,
+            height: size.width * .3,
+            child: ClipRRect(
+                borderRadius: BorderRadius.circular(1000),
+                child: file == null
+                    ? Image.asset(Assets.png.avatar.path)
+                    : Image.file(file)),
+          ),
+          AppDimens.medium.height,
+          const Text(AppStrings.chooseProfileImage,
+              style: AppTextStyles.avatarText)
+        ],
+      ),
     );
   }
 }

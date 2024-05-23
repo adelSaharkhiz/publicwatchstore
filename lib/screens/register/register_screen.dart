@@ -1,21 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:mywatchstore/components/extentions.dart';
 import 'package:mywatchstore/gen/assets.gen.dart';
 import 'package:mywatchstore/res/dimens.dart';
 import 'package:mywatchstore/res/strings.dart';
 import 'package:mywatchstore/routes/screen_names.dart';
+import 'package:mywatchstore/utils/image_handler.dart';
 import 'package:mywatchstore/widgets/app_text_field.dart';
 import 'package:mywatchstore/widgets/avatar.dart';
 import 'package:mywatchstore/widgets/register_app_bar.dart';
 import 'package:mywatchstore/widgets/main_button.dart';
 
-class RegisterScreen extends StatelessWidget {
+class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
 
   @override
+  State<RegisterScreen> createState() => _RegisterScreenState();
+}
+
+class _RegisterScreenState extends State<RegisterScreen> {
+  TextEditingController controller = TextEditingController();
+
+  ImageHandler imageHandler = ImageHandler();
+  @override
   Widget build(BuildContext context) {
-    TextEditingController controller = TextEditingController();
     Size size = MediaQuery.sizeOf(context);
     return SafeArea(
         child: Scaffold(
@@ -28,7 +37,11 @@ class RegisterScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               AppDimens.large.height,
-              const Avatar(),
+              Avatar(
+                  onTap: () async => await imageHandler
+                      .pichAndCropImage(source: ImageSource.gallery)
+                      .then((value) => setState(() {})),
+                  file: imageHandler.getImage),
               AppTextField(
                   lablel: AppStrings.nameLastName,
                   controller: controller,
